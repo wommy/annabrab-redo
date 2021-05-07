@@ -1,0 +1,46 @@
+---js
+{
+layout: "_Page",
+title: "about",
+eleventyNavigation: { key: "about", },
+
+}
+---
+<div>
+	<div class="w-1/2 mx-auto">
+		<p>Studio: {{ meta.studio_addr }}</p>
+		<p>
+			<a href="mailto:{{ meta.email }}">Email:</a>
+			<span>{{ meta.email }}</span>
+		</p>
+		<form name='contact' method='post' netlify class="flex flex-col">
+			{%- for ea in ["Name","Email", "Subject"] %}
+			<label class="mt-2">
+				<span class="block">{{ ea }}</span>
+				<input class="w-full" type="text" name="{{ ea }}" placeholder="* {{ ea }}">
+			</label>
+			{%- endfor %}
+			<label class="mt-2">
+				<span class="block">Message</span>
+				<textarea class="w-full" name="message" placeholder="Message"></textarea>
+			</label>
+			<input class="w-1/2 ml-auto" type="submit" value="Send">
+		</form>
+	</div>
+	<div class="mt-4 gap-4 flex flex-col content-center">
+		<h3 class="text-center">-CV-</h3>
+		{%- for ea in meta.cv %}
+		<div class="gap-4 flex">
+			<div class="w-1/2 gap-4 justify-end flex">
+				<span class="text-center">{{ ea.when }}</span>
+				<span class="w-1/2 text-center">{{ ea.tag | upper }}</span>
+			</div>
+			<div class="w-1/2 flex flex-col">
+				{%- for x in ea.what %}
+				<span>{{ x }}</span>
+				{%- endfor %}
+			</div>
+		</div>
+		{%- endfor %}
+	</div>
+</div>
