@@ -5,4 +5,12 @@ permalink: "/",
 eleventyNavigation: { key: "work", },
 }
 ---
-<p>welcome to the {{ title }} page</p>
+<div class="space-y-32 flex flex-col">
+	{%- for ea in art %}
+	<div class="w-{{ ea.width }}/2 mx-auto">
+		<a href="/{{ ea.name | slug }}">
+			<img src="{{ ea.img }}" alt="{{ ea.name }}">
+		</a>
+	</div>
+	{%- endfor %}
+</div>

@@ -1,0 +1,28 @@
+---js
+{
+layout: "_Post",
+permalink: "/{{ artwork.name | slug }}/",
+pagination: {
+data: "art",
+size: 1,
+alias: "artwork",
+}
+}
+---
+<div class="mt-20 justify-evenly content-center flex">
+	<div class="w-1/2">
+		<img src="{{ artwork.img }}" alt="{{ artwork.name }}">
+	</div>
+	<div class="w-1/4 h-2/3 p-6 shadow-2xl">
+		<div class="flex flex-col justify-between">
+			<h3 class="my-0 text-xl font-medium capitalize">{{ artwork.name }}</h3>
+			<p class="my-0">{{ artwork.published }}</p>
+		</div>
+		<p>
+			{%- for ea in artwork.description[0] %}
+			<span>{{ ea }}</span>
+			{%- endfor %}
+			<span>{{ artwork.description[1] }}</span>
+		</p>
+	</div>
+</div>
