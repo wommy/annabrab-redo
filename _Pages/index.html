@@ -6,10 +6,10 @@ eleventyNavigation: { key: "work", },
 }
 ---
 <div class="space-y-32 flex flex-col">
-	{%- for ea in art %}
+	{%- for ea in art1.items %}
 	<div class="w-{{ ea.width }}/2 mx-auto">
-		<a href="/{{ ea.name | slug }}">
-			<img src="{{ ea.img }}" alt="{{ ea.name }}">
+		<a href="/{{ ea.title | slug }}">
+			<img src="{{ ea.img }}" alt="{{ ea.title }}">
 		</a>
 	</div>
 	{%- endfor %}

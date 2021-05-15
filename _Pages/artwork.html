@@ -1,28 +1,29 @@
 ---js
 {
 layout: "_Post",
-permalink: "/{{ artwork.name | slug }}/",
+permalink: "/{{ artwork.title | slug }}/",
 pagination: {
-data: "art",
+data: "art1.items",
 size: 1,
 alias: "artwork",
 }
 }
 ---
-<div class="mt-20 justify-evenly content-center flex">
-	<div class="w-1/2">
-		<img src="{{ artwork.img }}" alt="{{ artwork.name }}">
+<div class="mt-10 sm:mt-16 justify-evenly content-center flex">
+	<div class="sm:h-{{ artwork.width }}/3">
+		<img class="" src="{{ artwork.img }}" alt="{{ artwork.title }}">
 	</div>
-	<div class="w-1/4 h-2/3 p-6 shadow-2xl">
-		<div class="flex flex-col justify-between">
-			<h3 class="my-0 text-xl font-medium capitalize">{{ artwork.name }}</h3>
+	<div class="flex flex-col justify-center">
+		<div class="mx-auto p-8 shadow-2xl text-center">
+			<h3 class="my-0 text-xl font-medium capitalize">{{ artwork.title }}</h3>
 			<p class="my-0">{{ artwork.published }}</p>
+			{%- if artwork.tags %}
+			<p>
+				{%- for ea in artwork.tags %}
+				<span class="block">{{ ea }}</span>
+				{%- endfor %}
+			</p>
+			{%- endif %}
 		</div>
-		<p>
-			{%- for ea in artwork.description[0] %}
-			<span>{{ ea }}</span>
-			{%- endfor %}
-			<span>{{ artwork.description[1] }}</span>
-		</p>
 	</div>
 </div>

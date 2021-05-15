@@ -8,10 +8,10 @@ eleventyNavigation: { key: "about", },
 ---
 <div>
 	<div class="w-1/2 mx-auto">
-		<p>Studio: {{ meta.studio_addr }}</p>
+		<p>Studio: {{ meta1.studio_addr }}</p>
 		<p>
-			<a href="mailto:{{ meta.email }}">Email:</a>
-			<span>{{ meta.email }}</span>
+			<a href="mailto:{{ meta1.email }}">Email:</a>
+			<span>{{ meta1.email }}</span>
 		</p>
 		<form name='contact' method='post' netlify class="flex flex-col">
 			{%- for ea in ["Name","Email", "Subject"] %}
@@ -29,15 +29,16 @@ eleventyNavigation: { key: "about", },
 	</div>
 	<div class="mt-4 gap-4 flex flex-col content-center">
 		<h3 class="text-center">-CV-</h3>
-		{%- for ea in meta.cv %}
+		{%- for ea in cv1.items %}
 		<div class="gap-4 flex">
-			<div class="w-1/2 gap-4 justify-end flex">
-				<span class="text-center">{{ ea.when }}</span>
-				<span class="w-1/2 text-center">{{ ea.tag | upper }}</span>
+			<div class="w-1/2 gap-4 justify-end flex text-center">
+				<div>{{ ea.when }}</div>
+				<div class="w-1/2">{{ ea.tag | upper }}</div>
 			</div>
-			<div class="w-1/2 flex flex-col">
-				{%- for x in ea.what %}
-				<span>{{ x }}</span>
+			<div>
+				<div>{{ ea.what }}</div>
+				{%- for x in ea.where %}
+				<div>{{ x }}</div>
 				{%- endfor %}
 			</div>
 		</div>
